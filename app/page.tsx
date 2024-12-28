@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div>
       <p>
-        hello dev !!!
+        hello devs !!dd
       </p>
       <Button>boton</Button>
     </div>
