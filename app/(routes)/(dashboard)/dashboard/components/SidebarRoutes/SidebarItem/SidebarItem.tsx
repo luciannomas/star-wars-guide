@@ -9,7 +9,8 @@ export function SidebarItem(props: SidebarItemProps) {
 
   const pathname = usePathname();
 
-  const activePath = pathname === href;
+  //TODO: segun el path actual, se pone el color de fondo
+  const activePath = pathname === href; 
 
   return (
     <Link
