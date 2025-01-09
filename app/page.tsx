@@ -9,6 +9,7 @@ export default function Home() {
     router.push("/sign-in");
   };
 
+  //TODO: home principal
   return (
     <div>
       <p>aqui portada web</p>
