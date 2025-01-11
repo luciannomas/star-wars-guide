@@ -9,7 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { TableReservesProps } from "./TableReserves.types";
-import { formatPrice } from "@/lib/formatPrice";
+// import { formatPrice } from "@/lib/formatPrice";
 
 export function TableReserves(props: TableReservesProps) {
   const { orders } = props;
@@ -62,7 +62,8 @@ export function TableReserves(props: TableReservesProps) {
               })}
             </TableCell>
             <TableCell className="text-right">
-              {formatPrice(Number(order.totalAmount))}
+             {/*  {formatPrice(Number(order.totalAmount))} */}
+              formatPrice
             </TableCell>
           </TableRow>
         ))}
@@ -71,7 +72,8 @@ export function TableReserves(props: TableReservesProps) {
         <TableRow>
           <TableCell colSpan={5}>Total</TableCell>
           <TableCell className="text-right">
-            {formatPrice(totalAmount)}
+            {/* {formatPrice(totalAmount)} */}
+            formatPrice
           </TableCell>
         </TableRow>
       </TableFooter>

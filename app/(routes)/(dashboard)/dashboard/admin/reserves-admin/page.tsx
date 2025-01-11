@@ -5,7 +5,7 @@ import { TableReserves } from "./components/TableReserves";
 import { isAdministrator } from "@/lib/isAdministrator";
 
 export default async function pageReservesAdmin() {
-  const { userId } = auth();
+  const { userId } = await auth();
   const user = await currentUser();
 
   if (!userId || !user || !isAdministrator(userId)) {
