@@ -101,18 +101,18 @@ export function CardCar(props: CardCarProps) {
           </p>
         </div>
 
-        <div className="flex justify-between mt-3 gap-x-4">
-          <Button variant="outline" onClick={deleteCar}>
+        <div className="flex flex-col sm:flex-row justify-between mt-3 gap-4">
+          <Button variant="outline" onClick={deleteCar} className="w-full sm:w-auto">
             Delete
             <Trash className="w-4 h-4 ml-2" />
           </Button>
 
-          <ButtonEditCar carData={car} />
+          <ButtonEditCar carData={car}  />
         </div>
 
         {car.isPublish ? (
           <Button
-            className="w-full mt-3"
+            className="w-full mt-3 flex items-center justify-center"
             variant="outline"
             onClick={() => handlerPublishCar(false)}
           >
@@ -121,7 +121,7 @@ export function CardCar(props: CardCarProps) {
           </Button>
         ) : (
           <Button
-            className="w-full mt-3"
+            className="w-full mt-3 flex items-center justify-center"
             onClick={() => handlerPublishCar(true)}
           >
             Publish
