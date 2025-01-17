@@ -56,7 +56,7 @@ export function FormAddCar(props: FormAddCarProps) {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setOpenDialog(false);
     try {
-      await axios.post(`/api/cdar`, values);
+      await axios.post(`/api/car`, values);
       toast({
         title: "Car created ✅",
       });
