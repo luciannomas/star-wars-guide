@@ -24,11 +24,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-// import { UploadButton } from "@/utils/uploadthing";
+import { UploadButton } from "@/utils/uploadthing";
 import { useState } from "react";
 import { FormAddCarProps } from "./FormAddCar.types";
 // import { toast } from "@/components/ui/use-toast"; // OLD VERSION
 import { useRouter } from "next/navigation";
+
 
 export function FormAddCar(props: FormAddCarProps) {
   const { setOpenDialog } = props;
@@ -207,7 +208,7 @@ export function FormAddCar(props: FormAddCarProps) {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Car Image</FormLabel>
-                {/* <FormControl>
+                <FormControl>
                   {photoUploaded ? (
                     <p className="text-sm">Image uploaded!</p>
                   ) : (
@@ -224,7 +225,7 @@ export function FormAddCar(props: FormAddCarProps) {
                       }}
                     />
                   )}
-                </FormControl> */}
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
