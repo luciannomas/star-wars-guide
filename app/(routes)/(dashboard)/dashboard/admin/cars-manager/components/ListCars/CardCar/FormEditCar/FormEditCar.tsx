@@ -24,9 +24,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-// import { UploadButton } from "@/utils/uploadthing";
+import { UploadButton } from "@/utils/uploadthing";
 import { useState } from "react";
-// import { toast } from "@/components/ui/use-toast";
+// import { toast } from "@/components/ui/use-toast"; // OLD VERSION
+import { useToast } from "@/hooks/use-toast"
 import { useRouter } from "next/navigation";
 
 import { FormEditCarProps } from "./FormEditCar.types";
@@ -35,6 +36,7 @@ export function FormEditCar(props: FormEditCarProps) {
   const { carData, setOpenDialog } = props;
   const [photoUploaded, setPhotoUploaded] = useState(false);
   const router = useRouter();
+  const { toast } = useToast()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -56,13 +58,13 @@ export function FormEditCar(props: FormEditCarProps) {
 
     try {
       await axios.patch(`/api/car/${carData.id}/form`, values);
-      /* toast({ title: "Car edited ✌🏽" }); */
+      toast({ title: "Car edited ✌🏽" });
       router.refresh();
     } catch (error) {
-      /* toast({
+      toast({
         title: "Something went wrong",
         variant: "destructive",
-      }); */
+      });
     }
   };
 
@@ -201,7 +203,7 @@ export function FormEditCar(props: FormEditCarProps) {
               </FormItem>
             )}
           />
-          {/* <FormField
+          <FormField
             control={form.control}
             name="photo"
             render={({ field }) => (
@@ -228,7 +230,7 @@ export function FormEditCar(props: FormEditCarProps) {
                 <FormMessage />
               </FormItem>
             )}
-          /> */}
+          />
           <FormField
             control={form.control}
             name="priceDay"
