@@ -28,6 +28,7 @@ import { UploadButton } from "@/utils/uploadthing";
 import { useState } from "react";
 import { FormAddCarProps } from "./FormAddCar.types";
 // import { toast } from "@/components/ui/use-toast"; // OLD VERSION
+import { useToast } from "@/hooks/use-toast"
 import { useRouter } from "next/navigation";
 
 
@@ -35,6 +36,7 @@ export function FormAddCar(props: FormAddCarProps) {
   const { setOpenDialog } = props;
   const [photoUploaded, setPhotoUploaded] = useState(false);
   const router = useRouter();
+  const { toast } = useToast()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -54,16 +56,16 @@ export function FormAddCar(props: FormAddCarProps) {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setOpenDialog(false);
     try {
-      await axios.post(`/api/car`, values);
-      /* toast({
+      await axios.post(`/api/cdar`, values);
+      toast({
         title: "Car created ✅",
-      }); */
+      });
       router.refresh();
     } catch (error) {
-     /*  toast({
+      toast({
         title: "Something went wrong",
         variant: "destructive",
-      }); */
+      });
     }
   };
 
