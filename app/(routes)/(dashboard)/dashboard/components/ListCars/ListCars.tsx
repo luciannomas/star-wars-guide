@@ -5,11 +5,11 @@ import { ListCarsProps } from "./ListCars.types";
 import Image from "next/image";
 import { Fuel, Gauge, Gem, Heart, Users, Wrench } from "lucide-react";
 import { ModalAddReservation } from "@/components/Shared/ModalAddReservation";
-// import { useLovedCars } from "@/hooks/use-loved-cars";
+import { useLovedCars } from "@/hooks/use-loved-cars";
 
 export function ListCars(props: ListCarsProps) {
   const { cars } = props;
-  // const { addLoveItem, lovedItems, removeLovedItem } = useLovedCars();
+  const { addLoveItem, lovedItems, removeLovedItem } = useLovedCars();
 
   return (
     <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
@@ -26,7 +26,7 @@ export function ListCars(props: ListCarsProps) {
           type,
         } = car;
 
-        // const likedCar = lovedItems.some((item) => item.id === car.id);
+        const likedCar = lovedItems.some((item) => item.id === car.id);
 
         return (
           <div key={id} className="p-1 rounded-lg shadow-md hover:shadow-lg">
@@ -66,12 +66,12 @@ export function ListCars(props: ListCarsProps) {
               <div className="flex items-center justify-center gap-x-3">
                 <ModalAddReservation car={car} />
                 <Heart
-                  // className={`mt-2 cursor-pointer ${likedCar && "fill-black"}`}
-                  /* onClick={
+                  className={`mt-2 cursor-pointer ${likedCar && "fill-black"}`}
+                  onClick={
                     likedCar
                       ? () => removeLovedItem(car.id)
                       : () => addLoveItem(car)
-                  } */
+                  }
                 />
               </div>
             </div>
