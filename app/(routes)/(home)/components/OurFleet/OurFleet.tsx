@@ -58,7 +58,7 @@ export function OurFleet() {
           ))}
         </div>
       </div>
-      <Link href="/cars">
+      <Link href="/">
         <Button className="rounded-xl p-6 text-lg mt-5" variant="outline">
           Show all models
           <MoveRight className="ml-2" />
