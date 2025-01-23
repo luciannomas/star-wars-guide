@@ -8,7 +8,6 @@ import { ModalAddReservation } from "@/components/Shared/ModalAddReservation";
 export function ListLovedCars() {
   const { lovedItems, removeLovedItem } = useLovedCars();
   
-
   return (
     <>
       {lovedItems.length === 0 ? (
