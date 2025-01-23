@@ -31,6 +31,14 @@ export function ModalAddReservation(props: ModalAddReservationProps) {
 
   const { toast } = useToast()
 
+  const handleReserveVehicle = () => {
+    const phoneNumber = "1136936750";
+    const message = `Hola, me gustaría reservar el vehículo ${car.name}.`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappUrl, "_blank");
+  };
+
   const onReserveCar = async (car: Car, dateSelected: DateRange) => {
     const response = await axios.post("/api/checkout", {
       carId: car.id,
@@ -49,11 +57,11 @@ export function ModalAddReservation(props: ModalAddReservationProps) {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="outline" className="w-full mt-3">
+        <Button variant="outline" className="w-full mt-3"  onClick={handleReserveVehicle}>
           Reservar vehículo 
         </Button>
       </AlertDialogTrigger>
-      <AlertDialogContent>
+      {/* <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>
             Selecciona las fechas en las quieres alquilar el coche
@@ -71,7 +79,7 @@ export function ModalAddReservation(props: ModalAddReservationProps) {
             Reservar vehículo
           </AlertDialogAction>
         </AlertDialogFooter>
-      </AlertDialogContent>
+      </AlertDialogContent> */}
     </AlertDialog>
   );
 }
