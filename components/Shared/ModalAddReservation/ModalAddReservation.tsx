@@ -50,7 +50,7 @@ export function ModalAddReservation(props: ModalAddReservationProps) {
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <Button variant="outline" className="w-full mt-3">
-          Reservar vehículo
+          Reservar vehículo 
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>

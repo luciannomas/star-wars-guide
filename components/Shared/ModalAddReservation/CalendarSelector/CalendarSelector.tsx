@@ -84,7 +84,8 @@ export function CalendarSelector(props: CalendarSelectorProps) {
               defaultMonth={date?.from}
               selected={date}
               onSelect={setDate}
-              numberOfMonths={2}
+              // numberOfMonths={1} // Cambia a 1 mes para dispositivos móviles //antes 2
+              className="sm:numberOfMonths-2" // Cambia a 2 meses para pantallas más grandes
             />
           </PopoverContent>
         </Popover>

@@ -21,8 +21,6 @@ export default async function CarsManagerPage() {
     },
   });
 
-  console.log("car totals: ", car);
-
   return (
     <div>
       <div className="flex justify-between">
