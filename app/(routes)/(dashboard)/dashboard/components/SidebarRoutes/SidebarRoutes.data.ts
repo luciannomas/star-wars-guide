@@ -3,17 +3,17 @@ import { Calendar, Car, Heart, SquareGanttChart } from "lucide-react";
 export const dataGeneralSidebar = [
   {
     icon: Car,
-    label: "Cars",
+    label: "Autos",
     href: "/dashboard",
   },
-  {
+  /* {
     icon: Calendar,
     label: "Cars Reserves",
     href: "/reserves",
-  },
+  }, */
   {
     icon: Heart,
-    label: "Loved Cars",
+    label: "Favoritos",
     href: "/loved-cars",
   },
 ];

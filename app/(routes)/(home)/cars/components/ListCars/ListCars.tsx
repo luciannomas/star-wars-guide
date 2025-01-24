@@ -20,6 +20,14 @@ export function ListCars(props: ListCarsProps) {
     return <SkeletonCars />;
   }
 
+  const handleReserveVehicle = () => {
+    const phoneNumber = "541136936750";
+    const message = `Hola, me gustaría reservar el vehículo ${name}.`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappUrl, "_blank");
+  };
+
   return (
     <>
       {cars.length === 0 && (
@@ -90,8 +98,12 @@ export function ListCars(props: ListCarsProps) {
                 ) : (
                   <div className="w-full mt-2 text-center">
                     <Link href="/sign-in">
-                      <Button variant="outline" className="w-full">
+                      {/* <Button variant="outline" className="w-full">
                         Inicia sesión para reservar
+                      </Button> */}
+                      <Button variant="outline" className="w-full mt-3"  
+                        onClick={handleReserveVehicle}>
+                        Reservar vehículo 
                       </Button>
                     </Link>
                   </div>

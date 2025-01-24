@@ -23,7 +23,7 @@ export default async function DashboardPage() {
   return (
     <div>
       <div className="flex justify-between">
-        <h2 className="text-2xl font-bold">List of cars</h2>
+      {/*   <h2 className="text-2xl font-bold">List of cars</h2> */}
       </div>
       {/* <ListCars cars={cars} /> */} {/* old lista de autos a reservar sin paginacion ni filtro */}
       <FiltersAndListCars cars={cars} /> {/* Con filtro pero sin paginacion */}
