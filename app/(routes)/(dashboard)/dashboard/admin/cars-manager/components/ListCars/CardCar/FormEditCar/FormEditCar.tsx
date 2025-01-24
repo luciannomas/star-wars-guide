@@ -42,13 +42,12 @@ export function FormEditCar(props: FormEditCarProps) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: carData.name,
-      cv: carData.cv,
+      km: carData.km,
       transmission: carData.transmission,
-      people: carData.people,
       photo: carData.photo,
       engine: carData.engine,
       type: carData.type,
-      priceDay: carData.priceDay,
+      price: carData.price,
       isPublish: carData.isPublish ? carData.isPublish : false,
     },
   });
@@ -57,7 +56,7 @@ export function FormEditCar(props: FormEditCarProps) {
     setOpenDialog(false);
 
     try {
-      await axios.patch(`/api/car/${carData.id}/form`, values);
+      await axios.patch(`/api/bobecars/${carData.id}/form`, values);
       toast({ title: "Car edited ✌🏽" });
       router.refresh();
     } catch (error) {
@@ -89,7 +88,7 @@ export function FormEditCar(props: FormEditCarProps) {
           />
           <FormField
             control={form.control}
-            name="cv"
+            name="km"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Power</FormLabel>
@@ -124,7 +123,7 @@ export function FormEditCar(props: FormEditCarProps) {
               </FormItem>
             )}
           />
-          <FormField
+          {/* <FormField
             control={form.control}
             name="people"
             render={({ field }) => (
@@ -149,7 +148,7 @@ export function FormEditCar(props: FormEditCarProps) {
                 <FormMessage />
               </FormItem>
             )}
-          />
+          /> */}
           <FormField
             control={form.control}
             name="engine"
@@ -233,7 +232,7 @@ export function FormEditCar(props: FormEditCarProps) {
           />
           <FormField
             control={form.control}
-            name="priceDay"
+            name="price"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Price per Day</FormLabel>

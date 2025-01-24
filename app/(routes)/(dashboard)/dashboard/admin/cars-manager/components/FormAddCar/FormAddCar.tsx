@@ -27,28 +27,25 @@ import {
 import { UploadButton } from "@/utils/uploadthing";
 import { useState } from "react";
 import { FormAddCarProps } from "./FormAddCar.types";
-// import { toast } from "@/components/ui/use-toast"; // OLD VERSION
-import { useToast } from "@/hooks/use-toast"
+import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
-
 
 export function FormAddCar(props: FormAddCarProps) {
   const { setOpenDialog } = props;
   const [photoUploaded, setPhotoUploaded] = useState(false);
   const router = useRouter();
-  const { toast } = useToast()
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      cv: "",
+      km: "",
       transmission: "",
-      people: "",
       photo: "",
       engine: "",
       type: "",
-      priceDay: "",
+      price: "",
       isPublish: false,
     },
   });
@@ -56,7 +53,7 @@ export function FormAddCar(props: FormAddCarProps) {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setOpenDialog(false);
     try {
-      await axios.post(`/api/car`, values);
+      await axios.post(`/api/bobecars`, values);
       toast({
         title: "Car created ✅",
       });
@@ -90,12 +87,12 @@ export function FormAddCar(props: FormAddCarProps) {
           />
           <FormField
             control={form.control}
-            name="cv"
+            name="km"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Power</FormLabel>
+                <FormLabel>Kilometers</FormLabel>
                 <FormControl>
-                  <Input placeholder="150 CV" type="number" {...field} />
+                  <Input placeholder="15000 km" type="number" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -119,32 +116,6 @@ export function FormAddCar(props: FormAddCarProps) {
                   <SelectContent>
                     <SelectItem value="manual">Manual</SelectItem>
                     <SelectItem value="automatic">Automático</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="people"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>People</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select the quantity of people" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="2">2</SelectItem>
-                    <SelectItem value="4">4</SelectItem>
-                    <SelectItem value="5">5</SelectItem>
-                    <SelectItem value="7">7</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -234,12 +205,12 @@ export function FormAddCar(props: FormAddCarProps) {
           />
           <FormField
             control={form.control}
-            name="priceDay"
+            name="price"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Price per Day</FormLabel>
+                <FormLabel>Price</FormLabel>
                 <FormControl>
-                  <Input placeholder="20€" type="number" {...field} />
+                  <Input placeholder="20000€" type="number" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

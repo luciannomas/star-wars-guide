@@ -52,3 +52,19 @@ model Order {
   @@index([carId])
   @@index([userId])
 }
+
+model Bobecars {
+  id           String   @id @default(uuid())
+  userId       String
+  name         String   @db.Text
+  km           String   @db.Text
+  transmission String   @db.Text
+  photo        String   @db.Text
+  price        String   @db.Text
+  engine       String   @db.Text
+  type         String   @db.Text
+  isPublish    Boolean?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

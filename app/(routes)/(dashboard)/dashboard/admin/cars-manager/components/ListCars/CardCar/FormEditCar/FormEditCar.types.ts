@@ -1,7 +1,7 @@
-import { Car } from "@prisma/client";
+import { Bobecars } from "@prisma/client";
 import { Dispatch, SetStateAction } from "react";
 
 export type FormEditCarProps = {
-  carData: Car;
+  carData: Bobecars;
   setOpenDialog: Dispatch<SetStateAction<boolean>>;
 };

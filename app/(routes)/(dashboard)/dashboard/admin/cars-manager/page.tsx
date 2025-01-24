@@ -12,7 +12,7 @@ export default async function CarsManagerPage() {
     return redirect("/");
   }
 
-  const car = await db.car.findMany({
+  const car = await db.bobecars.findMany({
     where: {
       userId,
     },

@@ -1,5 +1,5 @@
-import { Car } from "@prisma/client";
+import { Bobecars } from "@prisma/client";
 
 export type ButtonEditCarProps = {
-  carData: Car;
+  carData: Bobecars;
 };
