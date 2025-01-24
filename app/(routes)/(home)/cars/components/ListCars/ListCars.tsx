@@ -53,7 +53,7 @@ export function ListCars(props: ListCarsProps) {
               <div className="relative p-3 flex-grow flex flex-col justify-between">
                 <div className="flex flex-col mb-3 gap-x-4">
                   <p className="text-xl min-h-16 lg:min-h-fit">{name}</p>
-                  <p>{price}usd</p>
+                  <p>{price}<strong> US$</strong></p>
                 </div>
                 <div className="grid md:grid-cols-2 gap-x-4">
                   <p className="flex items-center">

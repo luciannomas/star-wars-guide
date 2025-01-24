@@ -35,9 +35,12 @@ export function SidebarRoutes() {
         <Separator />
 
         <footer className="p-3 mt-3 text-center">
-          2024. All rights reserved
+          <a href="https://shupptime.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-black no-underline">
+            2025. All rights reserved by Shupptime
+          </a>
         </footer>
       </div>
+      
     </div>
   );
 }

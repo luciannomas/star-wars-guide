@@ -72,7 +72,7 @@ export function CardCar(props: CardCarProps) {
       <div className="relative p-3 flex-grow flex flex-col justify-between">
         <div className="flex flex-col mb-3 gap-x-4">
           <p className="text-xl min-h-16 lg:min-h-fit">{car.name}</p>
-          <p>{car.price}€</p>
+          <p>{car.price}<strong> US$</strong></p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-x-4">

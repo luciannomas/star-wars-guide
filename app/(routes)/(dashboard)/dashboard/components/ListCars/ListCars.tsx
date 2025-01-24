@@ -39,7 +39,7 @@ export function ListCars(props: ListCarsProps) {
             <div className="p-3">
               <div className="flex flex-col mb-3 gap-x-4">
                 <p className="text-xl min-h-16 lg:min-h-fit">{name}</p>
-                <p>{price}€</p>
+                <p>{price}<strong> US$</strong></p>
               </div>
               <p className="flex items-center">
                 <Gem className="h-4 w-4 mr-2" strokeWidth={1} />

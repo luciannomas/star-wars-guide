@@ -13,6 +13,24 @@ import { FiltersCarsProps } from "./FiltersCars.types";
 import { Trash } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+const carBrands = [
+  "Chevrolet",
+  "Volkswagen",
+  "Ford",
+  "Suzuki",
+  "Fiat",
+  "Audi",
+  "BMW",
+  "Peugeot",
+  "Citroen",
+  "Toyota",
+  "Honda",
+  "Nissan",
+  "Renault",
+  "Hyundai",
+  "Kia",
+];
+
 export function FilterCars(props: FiltersCarsProps) {
   const { clearFilters, setFilters, filters } = props;
 
@@ -32,11 +50,11 @@ export function FilterCars(props: FiltersCarsProps) {
         <SelectContent>
           <SelectGroup>
             <SelectLabel>Tipo de vehículo</SelectLabel>
-            <SelectItem value="sedan">Sedán</SelectItem>
-            <SelectItem value="suv">Suv</SelectItem>
-            <SelectItem value="coupe">Coupé</SelectItem>
-            <SelectItem value="familiar">Familiar</SelectItem>
-            <SelectItem value="luxe">De luxe</SelectItem>
+            {carBrands.map((brand) => (
+              <SelectItem key={brand} value={brand}>
+                {brand}
+              </SelectItem>
+            ))}
           </SelectGroup>
         </SelectContent>
       </Select>

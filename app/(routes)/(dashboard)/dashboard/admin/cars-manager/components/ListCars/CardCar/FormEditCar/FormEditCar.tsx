@@ -31,6 +31,24 @@ import { useToast } from "@/hooks/use-toast"
 import { useRouter } from "next/navigation";
 
 import { FormEditCarProps } from "./FormEditCar.types";
+const carBrands = [
+  "Chevrolet",
+  "Volkswagen",
+  "Ford",
+  "Suzuki",
+  "Fiat",
+  "Audi",
+  "BMW",
+  "Peugeot",
+  "Citroen",
+  "Toyota",
+  "Honda",
+  "Nissan",
+  "Renault",
+  "Hyundai",
+  "Kia",
+];
+
 
 export function FormEditCar(props: FormEditCarProps) {
   const { carData, setOpenDialog } = props;
@@ -191,11 +209,11 @@ export function FormEditCar(props: FormEditCarProps) {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="sedan">Sedán</SelectItem>
-                    <SelectItem value="suv">SUV</SelectItem>
-                    <SelectItem value="coupe">Coupé</SelectItem>
-                    <SelectItem value="familiar">Familiar</SelectItem>
-                    <SelectItem value="luxe">De luxe</SelectItem>
+                  {carBrands.map((brand) => (
+                      <SelectItem key={brand} value={brand}>
+                        {brand}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
                 <FormMessage />
