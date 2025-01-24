@@ -85,7 +85,7 @@ export function FilterCars(props: FiltersCarsProps) {
         <SelectContent>
           <SelectGroup>
             <SelectLabel>Tipo de motor</SelectLabel>
-            <SelectItem value="gasoil">Gasoil</SelectItem>
+            <SelectItem value="nafta">Nafta</SelectItem>
             <SelectItem value="diesel">Diesel</SelectItem>
             <SelectItem value="electric">Eléctrico</SelectItem>
             <SelectItem value="hybrid">Híbbrido</SelectItem>

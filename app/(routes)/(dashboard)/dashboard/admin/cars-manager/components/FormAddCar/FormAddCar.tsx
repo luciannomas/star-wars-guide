@@ -156,7 +156,7 @@ export function FormAddCar(props: FormAddCarProps) {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="gasoil">Nafta</SelectItem>
+                    <SelectItem value="nafta">Nafta</SelectItem>
                     <SelectItem value="diesel">Diesel</SelectItem>
                     <SelectItem value="electric">Eléctrico</SelectItem>
                     <SelectItem value="hybrid">Híbrido</SelectItem>
