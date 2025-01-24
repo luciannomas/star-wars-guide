@@ -1,5 +1,5 @@
-import { Car } from "@prisma/client";
+import { Bobecars } from "@prisma/client";
 
 export type ModalAddReservationProps = {
-  car: Car;
+  car: Bobecars;
 };

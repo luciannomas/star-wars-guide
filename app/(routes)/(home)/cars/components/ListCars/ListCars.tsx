@@ -5,7 +5,7 @@ import { Fuel, Gauge, Gem, Heart, Users, Wrench } from "lucide-react";
 import Image from "next/image";
 import { useLovedCars } from "@/hooks/use-loved-cars";
 import { useAuth } from "@clerk/nextjs";
-import { Car } from "@prisma/client";
+import { Bobecars } from "@prisma/client";
 import Link from "next/link";
 import { ModalAddReservation } from "@/components/Shared/ModalAddReservation";
 import { ListCarsProps } from "./ListCars.types";
@@ -26,16 +26,15 @@ export function ListCars(props: ListCarsProps) {
         <p>No se han encontrado vehículos con estos filtros</p>
       )}
       <div className="grid grid-cols-1 gap-6 my-4 sm:grid-cols-2 lg:grid-cols-4">
-        {cars.map((car: Car) => {
+        {cars.map((car: Bobecars) => {
           const {
-            priceDay,
+            price,
             photo,
             name,
             type,
             transmission,
-            people,
             engine,
-            cv,
+            km,
             id,
           } = car;
           const likedCar = lovedItems.some((item) => item.id === car.id);
@@ -54,7 +53,7 @@ export function ListCars(props: ListCarsProps) {
               <div className="relative p-3 flex-grow flex flex-col justify-between">
                 <div className="flex flex-col mb-3 gap-x-4">
                   <p className="text-xl min-h-16 lg:min-h-fit">{name}</p>
-                  <p>{priceDay}€ /día</p>
+                  <p>{price}usd</p>
                 </div>
                 <div className="grid md:grid-cols-2 gap-x-4">
                   <p className="flex items-center">
@@ -66,16 +65,12 @@ export function ListCars(props: ListCarsProps) {
                     {transmission}
                   </p>
                   <p className="flex items-center">
-                    <Users className="w-4 h-4 mr-2" strokeWidth={1} />
-                    {people}
-                  </p>
-                  <p className="flex items-center">
                     <Fuel className="w-4 h-4 mr-2" strokeWidth={1} />
                     {engine}
                   </p>
                   <p className="flex items-center">
                     <Gauge className="w-4 h-4 mr-2" strokeWidth={1} />
-                    {cv} CV
+                    <span className="text-sm">{km.toLocaleString()} km</span>
                   </p>
                 </div>
                 {userId ? (

@@ -6,7 +6,7 @@ import { Suspense } from "react";
 import { SkeletonCars } from "@/components/Shared/SkeletonCars";
 
 export default async function pageCars() {
-  const cars = await db.car.findMany({
+  const cars = await db.bobecars.findMany({
     where: {
       isPublish: true,
     },

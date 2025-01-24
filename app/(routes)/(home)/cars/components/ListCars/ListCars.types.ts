@@ -1,5 +1,5 @@
-import { Car } from "@prisma/client";
+import { Bobecars } from "@prisma/client";
 
 export type ListCarsProps = {
-  cars: Car[] | undefined;
+  cars: Bobecars[] | undefined;
 };

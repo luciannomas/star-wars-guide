@@ -1,12 +1,12 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { useToast } from "@/hooks/use-toast"
-import { Car } from "@prisma/client";
+import { Bobecars } from "@prisma/client";
 import { toast } from "react-toastify";
 
 interface UseLovedCarsType {
-  lovedItems: Car[];
-  addLoveItem: (data: Car) => void;
+  lovedItems: Bobecars[];
+  addLoveItem: (data: Bobecars) => void;
   removeLovedItem: (id: string) => void;
 }
 
@@ -16,7 +16,7 @@ export const useLovedCars = create(
   persist<UseLovedCarsType>(
     (set, get) => ({
       lovedItems: [],
-      addLoveItem: (data: Car) => {
+      addLoveItem: (data: Bobecars) => {
         
         const currentLovedItems = get().lovedItems;
         const existingItem = currentLovedItems.find(

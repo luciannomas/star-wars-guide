@@ -11,7 +11,7 @@ export default async function DashboardPage() {
     return redirect("/");
   }
 
-  const cars = await db.car.findMany({
+  const cars = await db.bobecars.findMany({
     where: {
       isPublish: true,
     },
@@ -25,7 +25,7 @@ export default async function DashboardPage() {
       <div className="flex justify-between">
         <h2 className="text-2xl font-bold">List of cars</h2>
       </div>
-      {/* <ListCars cars={cars} /> */} {/* lista de autos a reservar sin paginacion */}
+      {/* <ListCars cars={cars} /> */} {/* old lista de autos a reservar sin paginacion ni filtro */}
       <FiltersAndListCars cars={cars} /> {/* Con filtro pero sin paginacion */}
     </div>
   );

@@ -11,7 +11,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Car } from "@prisma/client";
+import { Bobecars, Car } from "@prisma/client";
 import { CalendarSelector } from "./CalendarSelector";
 import { addDays } from "date-fns";
 import { useState } from "react";
@@ -39,10 +39,10 @@ export function ModalAddReservation(props: ModalAddReservationProps) {
     window.open(whatsappUrl, "_blank");
   };
 
-  const onReserveCar = async (car: Car, dateSelected: DateRange) => {
+  const onReserveCar = async (car: Bobecars, dateSelected: DateRange) => {
     const response = await axios.post("/api/checkout", {
       carId: car.id,
-      priceDay: car.priceDay,
+      price: car.price,
       startDate: dateSelected.from,
       endDate: dateSelected.to,
       carName: car.name,

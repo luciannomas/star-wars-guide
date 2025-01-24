@@ -1,5 +1,5 @@
 "use client";
-import { Car } from "@prisma/client";
+import { Bobecars as Car } from "@prisma/client"; // Asegúrate de que el modelo Bobecars esté correctamente importado
 import { useEffect, useState } from "react";
 import { FiltersAndListCarsProps } from "./FiltersAndListCars.types";
 import { ListCars } from "../ListCars";
@@ -7,12 +7,11 @@ import { FilterCars } from "../FiltersCars";
 
 export function FiltersAndListCars(props: FiltersAndListCarsProps) {
   const { cars } = props;
-  const [filteredCars, setFilteredCars] = useState<Car[]>();
+  const [filteredCars, setFilteredCars] = useState<Car[]>([]);
   const [filters, setFilters] = useState({
     type: "",
     transmission: "",
     engine: "",
-    people: "",
   });
 
   useEffect(() => {
@@ -35,11 +34,6 @@ export function FiltersAndListCars(props: FiltersAndListCarsProps) {
         car.engine.toLowerCase().includes(filters.engine.toLowerCase())
       );
     }
-    if (filters.people) {
-      filtered = filtered.filter((car) =>
-        car.people.toLowerCase().includes(filters.people.toLowerCase())
-      );
-    }
     setFilteredCars(filtered);
   }, [filters, cars]);
 
@@ -55,9 +49,9 @@ export function FiltersAndListCars(props: FiltersAndListCarsProps) {
       type: "",
       transmission: "",
       engine: "",
-      people: "",
     });
   };
+
   return (
     <div>
       <FilterCars
