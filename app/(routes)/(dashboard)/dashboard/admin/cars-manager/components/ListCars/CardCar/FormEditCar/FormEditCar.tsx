@@ -183,7 +183,7 @@ export function FormEditCar(props: FormEditCarProps) {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="gasoil">Gasolina</SelectItem>
+                    <SelectItem value="gasoil">Nafta</SelectItem>
                     <SelectItem value="diesel">Diesel</SelectItem>
                     <SelectItem value="electric">Eléctrico</SelectItem>
                     <SelectItem value="hybrid">Híbrido</SelectItem>
