@@ -12,10 +12,9 @@ import Link from "next/link";
 export function OurFleet() {
   return (
     <div className="max-w-6xl mx-auto text-center py-12 lg:py-40 p-6">
-      <h3 className="text-2xl lg:text-6xl font-bold">Our Vehicle Feet</h3>
+      <h3 className="text-2xl lg:text-6xl font-bold">Bobe Cars</h3>
       <p className="text-lg mt-2 lg:mt-5 lg:text-xl text-center w-full mx-auto max-w-2xl mb-5 lg:mb-10">
-        Dont deny yourself pleasure of driving the best premium cars from around
-        the world here and now the world
+        No te niegues el placer de conducir los mejores coches premium de todo el mundo aquí y ahora.
       </p>
       <div className="grid grid-cols-2 lg:grid-cols-6 gap-4 items-center justify-center mb-5 max-w-2xl mx-auto">
         {categoryOurFleet.map(({ name, active }) => (
@@ -60,7 +59,7 @@ export function OurFleet() {
       </div>
       <Link href="/cars">
         <Button className="rounded-xl p-6 text-lg mt-5" variant="outline">
-          Show all models
+         {/*  Show all models */} Lista de autos
           <MoveRight className="ml-2" />
         </Button>
       </Link>
