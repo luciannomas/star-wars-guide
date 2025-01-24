@@ -81,9 +81,13 @@ export function ListCars(props: ListCarsProps) {
                     <span className="text-sm">{km.toLocaleString()} km</span>
                   </p>
                 </div>
-                {userId ? (
+                 
                   <div className="flex items-center justify-center gap-x-3">
-                    <ModalAddReservation car={car} />
+                    {/* <ModalAddReservation car={car} /> */}
+                    <Button variant="outline" className="w-full mt-3"  
+                        onClick={handleReserveVehicle}>
+                        Reservar vehículo 
+                      </Button>
                     <Heart
                       className={`mt-2 cursor-pointer ${
                         likedCar && "fill-black"
@@ -95,19 +99,16 @@ export function ListCars(props: ListCarsProps) {
                       }
                     />
                   </div>
-                ) : (
-                  <div className="w-full mt-2 text-center">
+                
+                  {/* <div className="w-full mt-2 text-center">
                     <Link href="/sign-in">
-                      {/* <Button variant="outline" className="w-full">
-                        Inicia sesión para reservar
-                      </Button> */}
                       <Button variant="outline" className="w-full mt-3"  
                         onClick={handleReserveVehicle}>
-                        Reservar vehículo 
+                        Reservar vehículo  d
                       </Button>
                     </Link>
-                  </div>
-                )}
+                  </div> */}
+  
               </div>
             </div>
           );
