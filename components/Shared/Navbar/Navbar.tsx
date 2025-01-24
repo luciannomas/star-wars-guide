@@ -10,6 +10,14 @@ export function Navbar() {
   const { userId } = useAuth();
   const { lovedItems } = useLovedCars();
 
+  const handleContactClick = () => {
+    const phoneNumber = "541136936750";
+    const message = "Hola, me gustaría obtener más información.";
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappUrl, "_blank");
+  };
+
   return (
     <div className="max-w-5xl py-5 mx-auto px-4">
       <div className="flex flex-col lg:flex-row justify-between items-center">
@@ -21,6 +29,9 @@ export function Navbar() {
         <div className="flex items-center justify-center gap-x-4 lg:gap-x-7">
           <Link href="/cars" className="text-lg">Lista de Cars</Link>
           <Link href="/dashboard" className="text-lg">Dashboard</Link>
+          <button onClick={handleContactClick} className="text-lg">
+            Contact
+          </button>
           <Link href="/fav">
             <Heart
               strokeWidth={1}
