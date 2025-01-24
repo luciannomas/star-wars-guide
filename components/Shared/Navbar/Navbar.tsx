@@ -21,7 +21,7 @@ export function Navbar() {
         <div className="flex items-center justify-center gap-x-4 lg:gap-x-7">
           <Link href="/cars" className="text-lg">Lista de Cars</Link>
           <Link href="/dashboard" className="text-lg">Dashboard</Link>
-          <Link href="/loved-cars">
+          <Link href="/fav">
             <Heart
               strokeWidth={1}
               className={`cursor-pointer ${lovedItems.length > 0 && "fill-black"}`}
