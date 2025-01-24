@@ -26,7 +26,7 @@ export default async function Home() {
       <div className="my-8 grid grid-cols-1 gap-6">
         <FiltersAndListCars cars={cars}/>
       </div>
-      <Features />
+    {/*   <Features /> */}
       <OurFleet />
       <DriveToday />
     </div>
