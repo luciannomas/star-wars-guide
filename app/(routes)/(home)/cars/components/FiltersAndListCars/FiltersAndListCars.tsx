@@ -54,7 +54,7 @@ export function FiltersAndListCars(props: FiltersAndListCarsProps) {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold">Lista de autos</h2>
+      <h2 className="text-2xl font-bold">Busca tu auto ideal</h2>
       <FilterCars
         setFilters={handleFilterChange}
         filters={filters}

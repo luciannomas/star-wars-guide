@@ -19,7 +19,7 @@ export default async function pageCars() {
     <div>
       <Navbar />
       <div className="p-6 mx-auto max-w-7xl">
-        <HeaderCars />
+        {/* <HeaderCars /> */}
         <div>
           <FiltersAndListCars cars={cars} />
         </div>
