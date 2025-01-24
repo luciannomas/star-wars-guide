@@ -1,9 +1,9 @@
 "use client";
-import { Car } from "@prisma/client";
+import { Bobecars } from "@prisma/client";
 
 import { ListCarsProps } from "./ListCars.types";
 import Image from "next/image";
-import { Fuel, Gauge, Gem, Heart, Users, Wrench } from "lucide-react";
+import { Fuel, Gauge, Gem, Heart, Wrench } from "lucide-react";
 import { ModalAddReservation } from "@/components/Shared/ModalAddReservation";
 import { useLovedCars } from "@/hooks/use-loved-cars";
 
@@ -13,14 +13,13 @@ export function ListCars(props: ListCarsProps) {
 
   return (
     <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
-      {cars.map((car: Car) => {
+      {cars.map((car: Bobecars) => {
         const {
-          priceDay,
+          price,
           photo,
-          cv,
+          km,
           engine,
           id,
-          people,
           name,
           transmission,
           type,
@@ -40,7 +39,7 @@ export function ListCars(props: ListCarsProps) {
             <div className="p-3">
               <div className="flex flex-col mb-3 gap-x-4">
                 <p className="text-xl min-h-16 lg:min-h-fit">{name}</p>
-                <p>{priceDay}€ /día</p>
+                <p>{price}€</p>
               </div>
               <p className="flex items-center">
                 <Gem className="h-4 w-4 mr-2" strokeWidth={1} />
@@ -51,16 +50,12 @@ export function ListCars(props: ListCarsProps) {
                 {transmission}
               </p>
               <p className="flex items-center">
-                <Users className="h-4 w-4 mr-2" strokeWidth={1} />
-                {people}
-              </p>
-              <p className="flex items-center">
                 <Fuel className="h-4 w-4 mr-2" strokeWidth={1} />
                 {engine}
               </p>
               <p className="flex items-center">
                 <Gauge className="h-4 w-4 mr-2" strokeWidth={1} />
-                {cv} CV
+                <span className="text-xs">{km.toLocaleString()} km</span>
               </p>
 
               <div className="flex items-center justify-center gap-x-3">
