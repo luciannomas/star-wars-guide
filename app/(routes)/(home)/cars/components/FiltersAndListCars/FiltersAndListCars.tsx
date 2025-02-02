@@ -54,12 +54,12 @@ export function FiltersAndListCars(props: FiltersAndListCarsProps) {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold">Busca tu auto ideal</h2>
-      <FilterCars
+      <h2 className="text-2xl font-bold">Select a movie</h2>
+      {/* <FilterCars
         setFilters={handleFilterChange}
         filters={filters}
         clearFilters={clearFilters}
-      />
+      /> */}
       <ListCars cars={filteredCars} />
     </div>
   );
