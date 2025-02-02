@@ -1,13 +1,11 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { useLovedCars } from "@/hooks/use-loved-cars";
-import { UserButton, useAuth } from "@clerk/nextjs";
 import { Heart, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export function Navbar() {
-  const { userId } = useAuth();
   const { lovedItems } = useLovedCars();
 
   const handleContactClick = () => {

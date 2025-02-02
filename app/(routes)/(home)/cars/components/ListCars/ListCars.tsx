@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Fuel, Gauge, Gem, Heart, Users, Wrench } from "lucide-react";
 import Image from "next/image";
 import { useLovedCars } from "@/hooks/use-loved-cars";
-import { useAuth } from "@clerk/nextjs";
 import { Bobecars } from "@prisma/client";
 import Link from "next/link";
 import { ModalAddReservation } from "@/components/Shared/ModalAddReservation";
@@ -13,7 +12,6 @@ import { SkeletonCars } from "@/components/Shared/SkeletonCars";
 
 export function ListCars(props: ListCarsProps) {
   const { cars } = props;
-  const { userId } = useAuth();
   const { addLoveItem, lovedItems, removeLovedItem } = useLovedCars();
 
   if (!cars) {
