@@ -1,5 +1,8 @@
+'use client'
 import Image from 'next/image';
 import Link from 'next/link';
+import SkeletonFilm from '../SkeletonFilm/SkeletonFilm';
+import { useState } from 'react';
 
 const mockFilms = [
     {
@@ -64,37 +67,48 @@ const mockFilms = [
     },
   ];
 
-export default function Film() {
-  return (
-    <div className="container mx-auto px-4">
-      <div className="my-8 flex justify-center">
-        <div className="w-full max-w-5xl">
-          <div className="grid grid-cols-1 gap-6 my-4 sm:grid-cols-2 lg:grid-cols-3">
-            {mockFilms.map((film) => {
-              const { id, photo, title } = film;
-
-              return (
-                <div key={id} className="relative p-1 bg-white rounded-lg shadow-md hover:shadow-lg h-full flex flex-col">
-                  <Link href={`/films/${id}`} className="relative w-full h-64">
-                    <Image
-                      src={photo}
-                      alt={title}
-                      fill
-                      objectFit="cover"
-                      className="rounded-t-lg"
-                    />
-                  </Link>
-                  <div className="relative p-3 flex-grow flex flex-col justify-between">
-                    <div className="flex flex-col mb-3 gap-x-4">
-                      <p className="text-xl min-h-16 lg:min-h-fit">{title}</p>
+  export default function Film() {
+    const [loading, setLoading] = useState(true);
+  
+    // Simula una carga de 2 segundos
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  
+    if (loading) {
+      return <SkeletonFilm />;
+    }
+  
+    return (
+      <div className="container mx-auto px-4">
+        <div className="my-8 flex justify-center">
+          <div className="w-full max-w-5xl">
+            <div className="grid grid-cols-1 gap-6 my-4 sm:grid-cols-2 lg:grid-cols-3">
+              {mockFilms.map((film) => {
+                const { id, photo, title } = film;
+  
+                return (
+                  <div key={id} className="relative p-1 bg-white rounded-lg shadow-md hover:shadow-lg h-full flex flex-col">
+                    <Link href={`/films/${id}`} className="relative w-full h-64">
+                      <Image
+                        src={photo}
+                        alt={title}
+                        fill
+                        objectFit="cover"
+                        className="rounded-t-lg"
+                      />
+                    </Link>
+                    <div className="relative p-3 flex-grow flex flex-col justify-between">
+                      <div className="flex flex-col mb-3 gap-x-4">
+                        <p className="text-xl min-h-16 lg:min-h-fit">{title}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
