@@ -4,13 +4,12 @@ import { useParams } from 'next/navigation';
 import { useFilmDetail } from '@/hooks/useFilmDetail';
 import { Navbar } from '@/components/Shared/Navbar';
 import Film from "../components/Film/Film";
-
 import Detail from '../components/Detail/Detail';
 
 const FilmDescription = () => {
   const { episode_id } = useParams();
-  console.log('episode_id:', episode_id);
   const { film, loading } = useFilmDetail(Number(episode_id));
+  console.log('Film2:', film);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -24,7 +23,7 @@ const FilmDescription = () => {
     <div className="container mx-auto px-4">
       <Navbar />
       <Detail film={film} />
-      <Film />
+      {/* <Film /> */}
     </div>
   );
 };
