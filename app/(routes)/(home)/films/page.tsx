@@ -1,8 +1,9 @@
 'use client'
 import Image from 'next/image';
 import Link from 'next/link';
-import SkeletonFilm from '../SkeletonFilm/SkeletonFilm';
+
 import { useFilms } from '@/hooks/useFilms';
+import SkeletonFilm from './components/SkeletonFilm/SkeletonFilm';
 
 export interface Film {
     id: number;
@@ -17,7 +18,6 @@ export interface Film {
 
 export default function Film() {
     const { films, loading }: { films: Film[]; loading: boolean } = useFilms();
-    console.log("films", films);
 
     if (loading) {
         return <SkeletonFilm />;

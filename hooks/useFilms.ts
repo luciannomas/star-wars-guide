@@ -1,5 +1,5 @@
-
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export const useFilms = () => {
   const [films, setFilms] = useState<Film[]>([]);
@@ -8,9 +8,8 @@ export const useFilms = () => {
   useEffect(() => {
     const fetchFilms = async () => {
       try {
-        const response = await fetch('https://swapi.dev/api/films/');
-        const data = await response.json();
-        const filmsWithPhotos = data.results.map((film: Film, index: number) => ({
+        const response = await axios.get('/api/films');
+        const filmsWithPhotos = response.data.films.map((film: Film, index: number) => ({
           ...film,
           photo: `/images/star_wars_${film.episode_id}.jpg`, 
         }));
@@ -29,12 +28,12 @@ export const useFilms = () => {
 };
 
 export interface Film {
-    id: number;
-    title: string;
-    photo: string;
-    opening_crawl: string;
-    characters: string[];
-    episode_id: number;
-    director: string;
-    release_date: string;
-  }
+  id: number;
+  title: string;
+  photo: string;
+  opening_crawl: string;
+  characters: string[];
+  episode_id: number;
+  director: string;
+  release_date: string;
+}
