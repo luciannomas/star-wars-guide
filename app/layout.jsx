@@ -11,16 +11,15 @@ const outfit = Outfit({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
   return (
-    
     <>
       <html lang="en">
-        <body className={outfit.className}>
-          <NextTopLoader />
-          {children}
-          <Toaster />
-          <ToastContainer />
-        </body>
+      <body className="bg-black text-[#ffe450]">
+        <NextTopLoader />
+        {children}
+        <Toaster />
+        <ToastContainer />
+      </body>
       </html>
     </>
-  );
+    );
 }
