@@ -1,6 +1,5 @@
-import { Film } from '@/app/(routes)/(home)/films/components/Film/Film.types';
-import { useState, useEffect } from 'react';
 
+import { useState, useEffect } from 'react';
 
 export const useFilms = () => {
   const [films, setFilms] = useState<Film[]>([]);
@@ -28,3 +27,14 @@ export const useFilms = () => {
 
   return { films, loading };
 };
+
+export interface Film {
+    id: number;
+    title: string;
+    photo: string;
+    opening_crawl: string;
+    characters: string[];
+    episode_id: number;
+    director: string;
+    release_date: string;
+  }

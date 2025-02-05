@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import SkeletonFilm from '../SkeletonFilm/SkeletonFilm';
-
 import { Film as FilmType } from './Film.types';
 import { useFilms } from '@/hooks/useFilms';
 
@@ -34,7 +33,7 @@ export default function Film() {
                                     </Link>
                                     <div className="relative p-3 flex-grow flex flex-col justify-between">
                                         <div className="flex flex-col mb-3 gap-x-4 items-center">
-                                            <p className="text-xl min-h-16 lg:min-h-fit text-black">{title}</p>
+                                        <p className="text-3xl md:text-4xl lg:text-2xl min-h-16 lg:min-h-fit text-gold font-bold mb-0 text-center text-shadow-black">{title}</p> {/* text-3xl en móviles, text-4xl en pantallas medianas, text-5xl en pantallas grandes, color dorado y fuente más ancha */}
                                         </div>
                                     </div>
                                 </div>

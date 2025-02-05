@@ -22,7 +22,7 @@ export default async function Home() {
   return (
     <div className="container mx-auto px-4">
       <Navbar />
-      <div className="my-8 flex justify-center">
+      <div className="-mt-3 md:-mt-4 flex justify-center"> 
         <div className="w-full max-w-5xl">
           {/* <FiltersAndListCars cars={cars} /> */}
           {/* <ListFilms films={mockFilms} /> */}
