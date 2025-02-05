@@ -2,11 +2,21 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import SkeletonFilm from '../SkeletonFilm/SkeletonFilm';
-import { Film as FilmType } from './Film.types';
 import { useFilms } from '@/hooks/useFilms';
 
+export interface Film {
+    id: number;
+    title: string;
+    photo: string;
+    opening_crawl: string;
+    characters: string[];
+    episode_id: number;
+    director: string;
+    release_date: string;
+  }
+
 export default function Film() {
-    const { films, loading }: { films: FilmType[]; loading: boolean } = useFilms();
+    const { films, loading }: { films: Film[]; loading: boolean } = useFilms();
 
     if (loading) {
         return <SkeletonFilm />;
@@ -17,7 +27,7 @@ export default function Film() {
             <div className="my-8 flex justify-center">
                 <div className="w-full max-w-5xl">
                     <div className="grid grid-cols-1 gap-6 my-4 sm:grid-cols-2 lg:grid-cols-3">
-                        {films.map((film: FilmType) => {
+                        {films.map((film: Film) => {
                             const { episode_id, title, photo } = film;
 
                             return (

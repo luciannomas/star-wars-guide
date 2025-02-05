@@ -25,7 +25,6 @@ export default async function Home() {
       <div className="-mt-3 md:-mt-4 flex justify-center"> 
         <div className="w-full max-w-5xl">
           {/* <FiltersAndListCars cars={cars} /> */}
-          {/* <ListFilms films={mockFilms} /> */}
           <Film />
         </div>
       </div>
