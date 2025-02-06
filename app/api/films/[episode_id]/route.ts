@@ -34,7 +34,7 @@ const episodeIdToIdMap: { [key: number]: number } = {
 };
 
 const fetchPersonData = async (id: string): Promise<Person> => {
-  const response = await axios.get(`http://localhost:3000/api/people/${id}`);
+  const response = await axios.get(`https://star-wars-guide-three.vercel.app/api/people/${id}`);
   return response.data;
 };
 
