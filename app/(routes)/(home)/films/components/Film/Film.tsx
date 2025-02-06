@@ -17,7 +17,7 @@ export interface Film {
 
 export default function Film() {
     const { films, loading }: { films: Film[]; loading: boolean } = useFilms();
-    console.log("films", films);
+    // console.log("films", films);
 
     if (loading) {
         return <SkeletonFilm />;

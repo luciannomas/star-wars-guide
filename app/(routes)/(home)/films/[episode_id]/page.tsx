@@ -9,7 +9,7 @@ import Detail from '../components/Detail/Detail';
 const FilmDescription = () => {
   const { episode_id } = useParams();
   const { film, loading } = useFilmDetail(Number(episode_id));
-  console.log('Film2:', film);
+  // console.log('Film2:', film);
 
   if (loading) {
     return <div>Loading...</div>;
