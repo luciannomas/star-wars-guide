@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/Shared/Navbar";
 import Film from "./films/components/Film/Film";
+import { Footer } from "@/components/Shared/Footer";
 
 export default async function Home() {
   return (
@@ -10,6 +11,7 @@ export default async function Home() {
           <Film />
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

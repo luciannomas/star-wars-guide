@@ -1,17 +1,28 @@
 'use client';
-import { Suspense } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { useFilmDetail } from '@/hooks/useFilmDetail';
 import { Navbar } from '@/components/Shared/Navbar';
 import Detail from '../components/Detail/Detail';
+import SkeletonDetail from '../components/SkeletonDetail/SkeletonDetail';
+import { Footer } from '@/components/Shared/Footer';
+
 
 const FilmDescription = () => {
   const { episode_id } = useParams();
   const { film, loading } = useFilmDetail(Number(episode_id));
-  console.log('Film2:', film);
+  const [showSkeleton, setShowSkeleton] = useState(true);
 
-  if (loading) {
-    return <div>Loading...</div>;
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSkeleton(false);
+    }, 3000); // 3 segundos
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading || showSkeleton) {
+    return <SkeletonDetail />;
   }
 
   if (!film) {
@@ -20,7 +31,6 @@ const FilmDescription = () => {
 
   return (
     <div className="container mx-auto px-4">
-      <Navbar />
       <Detail film={film} />
     </div>
   );
@@ -28,9 +38,11 @@ const FilmDescription = () => {
 
 const FilmDescriptionPage = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <>
+      <Navbar />
       <FilmDescription />
-    </Suspense>
+      <Footer />
+    </>
   );
 };
 

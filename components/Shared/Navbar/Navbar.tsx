@@ -12,7 +12,7 @@ export function Navbar() {
         </Link>
 
         <div className="flex items-center justify-center gap-x-2 lg:gap-x-4">
-          <Link href="/cars" className="text-lg hidden lg:block">Movie List</Link> {/* Oculto en móviles */}
+          <Link href="/" className="text-lg hidden lg:block">Movie List</Link> {/* Oculto en móviles */}
         </div>
       </div>
     </div>
