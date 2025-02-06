@@ -1,13 +1,21 @@
 import { NextResponse } from 'next/server';
+import axios from 'axios';
 
 interface Film {
   title: string;
   opening_crawl: string;
-  characters: string[];
   episode_id: number;
   director: string;
   release_date: string;
-  people: string[]; // Array de IDs de personajes
+  people: Person[]; // Array de objetos de personajes
+}
+
+interface Person {
+  id: string;
+  name: string;
+  gender: string;
+  birth_year: string;
+  homeworld: string;
 }
 
 interface FilmResponse {
@@ -23,6 +31,11 @@ const episodeIdToIdMap: { [key: number]: number } = {
   4: 1,
   5: 2,
   6: 3,
+};
+
+const fetchPersonData = async (id: string): Promise<Person> => {
+  const response = await axios.get(`http://localhost:3000/api/people/${id}`);
+  return response.data;
 };
 
 export async function GET(request: Request, { params }: { params: { episode_id: string } }): Promise<NextResponse<FilmResponse>> {
@@ -44,19 +57,20 @@ export async function GET(request: Request, { params }: { params: { episode_id: 
     }
     const film = await response.json();
 
-    const people = film.characters.map((characterUrl: string) => {
+    const peopleIds = film.characters.map((characterUrl: string) => {
       const id = characterUrl.split('/').filter(Boolean).pop();
       return id;
     });
 
+    const people: any = await Promise.all(peopleIds.map((id: string) => fetchPersonData(id)));
+
     const filmData: Film = {
       title: film.title,
       opening_crawl: film.opening_crawl,
-      characters: film.characters,
       episode_id: film.episode_id,
       director: film.director,
       release_date: film.release_date,
-      people, // Añadido la propiedad people con los IDs
+      people, // Añadido la propiedad people con los objetos de personajes
     };
 
     return NextResponse.json({ film: filmData });

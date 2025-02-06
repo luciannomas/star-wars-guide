@@ -1,3 +1,4 @@
+'use client'
 import Image from 'next/image';
 import { Film } from '../Film/Film.types';
 import TableFilm from '../TableFilm/TableFilm';

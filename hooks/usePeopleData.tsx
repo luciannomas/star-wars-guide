@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 interface Person {
   name: string;
@@ -6,23 +7,6 @@ interface Person {
   birth_year: string;
   homeworld: string;
 }
-
-const fetchPersonData = async (id: string): Promise<Person> => {
-  const personResponse = await fetch(`https://swapi.dev/api/people/${id}/`);
-  const personData = await personResponse.json();
-
-  const homeworldUrl = personData.homeworld;
-  const homeworldId = homeworldUrl.split('/').filter(Boolean).pop();
-  const homeworldResponse = await fetch(`https://swapi.dev/api/planets/${homeworldId}/`);
-  const homeworldData = await homeworldResponse.json();
-
-  return {
-    name: personData.name,
-    gender: personData.gender,
-    birth_year: personData.birth_year,
-    homeworld: homeworldData.name,
-  };
-};
 
 const usePeopleData = (ids: string[]) => {
   const [people, setPeople] = useState<Person[]>([]);
@@ -33,20 +17,23 @@ const usePeopleData = (ids: string[]) => {
     const fetchData = async () => {
       setLoading(true);
       setError(null);
+
       try {
-        const peopleData = await Promise.all(ids.map(id => fetchPersonData(id)));
+        const peopleData = await Promise.all(
+          ids.map(async (id) => {
+            const response = await axios.get(`/api/people/${id}`);
+            return response.data;
+          })
+        );
         setPeople(peopleData);
-      } catch (err) {
-        setError('Failed to fetch people data');
-        console.error('Error fetching people data:', err);
+      } catch (err: any) {
+        setError(err.message);
       } finally {
         setLoading(false);
       }
     };
 
-    if (ids.length > 0) {
-      fetchData();
-    }
+    fetchData();
   }, [ids]);
 
   return { people, loading, error };
