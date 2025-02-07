@@ -24,7 +24,7 @@ const Detail = ({ film }: any) => {
           <div className="relative p-1 bg-black rounded-lg shadow-md hover:shadow-lg h-full flex flex-col"> {/* Changed to bg-black */}
             <div className="relative w-full h-64 md:h-96">
               <Image
-                src={`/images/star_wars_${film.episode_id}.jpg`}
+                src={`/images/star_${film.episode_id}.jpg`}
                 alt={film.title}
                 fill
                 objectFit="cover"
