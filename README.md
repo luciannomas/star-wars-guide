@@ -2,6 +2,8 @@
 
 This application is a human guide themed around Star Wars. Users can select a movie and view its details along with the characters that participated in it.
 
+The following app can be seen from https://star-wars-guide-three.vercel.app/
+
 ## Features
 
 - Browse through a list of Star Wars movies.
