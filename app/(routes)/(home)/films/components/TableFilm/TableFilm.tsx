@@ -1,15 +1,5 @@
 'use client';
 
-export default function TableFilm({ people }: any) {
-  console.log('People:', people);
-
-  return (
-    <div className="w-full">
-      <DataTableDemo people={people} />
-    </div>
-  );
-}
-
 import * as React from "react";
 import {
   ColumnDef,
@@ -87,44 +77,15 @@ export const columns: ColumnDef<Person>[] = [
       <div>{row.getValue("homeworld")}</div>
     ),
   },
-  // {
-  //   id: "actions",
-  //   enableHiding: false,
-  //   cell: ({ row }) => {
-  //     const person = row.original;
-
-  //     return (
-  //       <DropdownMenu>
-  //         <DropdownMenuTrigger asChild>
-  //           <Button variant="ghost" className="h-8 w-8 p-0">
-  //             <span className="sr-only">Open menu</span>
-  //             <MoreHorizontal />
-  //           </Button>
-  //         </DropdownMenuTrigger>
-  //         <DropdownMenuContent align="end">
-  //           <DropdownMenuLabel>Actions</DropdownMenuLabel>
-  //           <DropdownMenuItem
-  //             onClick={() => navigator.clipboard.writeText(person.name)}
-  //           >
-  //             Copy name
-  //           </DropdownMenuItem>
-  //           <DropdownMenuSeparator />
-  //           <DropdownMenuItem>View details</DropdownMenuItem>
-  //         </DropdownMenuContent>
-  //       </DropdownMenu>
-  //     );
-  //   },
-  // },
 ];
 
 export function DataTableDemo({ people }: { people: Person[] }) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  );
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({});
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
+  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
+  const [pageIndex, setPageIndex] = React.useState(0);
+  const [pageSize, setPageSize] = React.useState(10);
 
   const table = useReactTable({
     data: people,
@@ -137,13 +98,23 @@ export function DataTableDemo({ people }: { people: Person[] }) {
     getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
+    onPaginationChange: (updater) => {
+      const newState = typeof updater === 'function' ? updater(table.getState().pagination) : updater;
+      setPageIndex(newState.pageIndex);
+      setPageSize(newState.pageSize);
+    },
     state: {
       sorting,
       columnFilters,
       columnVisibility,
       rowSelection,
+      pagination: { pageIndex, pageSize },
     },
   });
+
+  const totalRows = table.getFilteredRowModel().rows.length;
+  const selectedRows = table.getFilteredSelectedRowModel().rows.length;
+  const currentPageRows = Math.min((pageIndex + 1) * pageSize, totalRows);
 
   return (
     <div className="w-full">
@@ -235,8 +206,7 @@ export function DataTableDemo({ people }: { people: Person[] }) {
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
         <div className="flex-1 text-sm text-muted-foreground">
-          {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
+          {currentPageRows} of {totalRows} row(s) selected.
         </div>
         <div className="space-x-2">
           <Button
@@ -259,6 +229,16 @@ export function DataTableDemo({ people }: { people: Person[] }) {
           </Button>
         </div>
       </div>
+    </div>
+  );
+}
+
+export default function TableFilm({ people }: any) {
+  // console.log('People:', people);
+
+  return (
+    <div className="w-full">
+      <DataTableDemo people={people} />
     </div>
   );
 }

@@ -16,7 +16,7 @@ const FilmDescription = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSkeleton(false);
-    }, 500); 
+    }, 800); 
 
     return () => clearTimeout(timer);
   }, []);
